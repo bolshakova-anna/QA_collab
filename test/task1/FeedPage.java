@@ -27,27 +27,21 @@ public class FeedPage {
     }
     */
 
-
-    public static void searchMusic(String name) {
+    public static void searchMusic(String name){
         //тык на музыку
         $(By.xpath("//*[@id=\'music_toolbar_button\']")).click();
         //ввод названия трека - поиск
         $(By.xpath(("//*[@placeholder=\"Поиск\" and @data-l=\"t,input\"]"))).click();
-        // $(By.xpath(("//*[@placeholder=\"Поиск\" and @data-l=\"t,input\"]"))).val(name).pressEnter();
         $(By.xpath(("//*[@id=\"music_layer\"]/header/div/wm-search-form/wm-search-input/input"))).val(name).pressEnter();
     }
 
-
-        public static void addMusic(){
-        $(By.xpath("//a[contains(@data-payload, \"artistName=Звери\")]/../..")).click();
-
+    public static void addMusic(){
+        $(By.xpath("//*[@id=\"music_layer\"]/main/div/div[2]/div/search-page/wm-portlet/slot/wm-tracks-list/main/wm-track[1]")).hover();
         $(By.xpath("//*[@title=\"В мою музыку\"]")).click();
     }
 
     public static void openMyMusic(){
         $(By.xpath("//div[text()='Моя музыка']")).click();
     }
-
-
 
 }
