@@ -12,13 +12,15 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class AddMusicTest {
 
-    private static String OKMusicName = System.getProperty("OK.musicName", "звери - для тебя");
+    private static String OKMusicRequest = System.getProperty("OK.musicRequest", "звери - для тебя");
+
+    private static String OKMusicName = System.getProperty("OK.musicName", "Для тебя");
 
     @Test
     public void addMusicTest(){
         FeedPage feedPage = new FeedPage();
 
-        feedPage.searchMusic(OKMusicName);
+        feedPage.searchMusic(OKMusicRequest);
         feedPage.addMusic();
         feedPage.openMyMusic();
 
