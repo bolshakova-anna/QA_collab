@@ -21,10 +21,14 @@ public class AddMusicTest {
 
         feedPage.searchMusic(OKMusicName);
         feedPage.addMusic();
+        feedPage.openMyMusic();
 
-        $(By.xpath(""))
-                .shouldHave(text(OKMusicName))
+          $(By.xpath("//*[@id=\"music_layer\"]/main/div/div[2]/div/library-page/wm-portlet[1]/slot/wm-tracks-list/main/wm-track/slot[2]/wm-card-details/slot[1]"))
+                .shouldHave(text("Для тебя"))
                 .shouldBe(visible);
+
+
+
     }
 
 }
