@@ -35,4 +35,5 @@ public class LoginPage {
     $(By.xpath(loginFieldXPath)).val(OKUsername);
     $(By.xpath(passwordFieldXPath)).val(OKPassword).pressEnter();
   }
+
 }

@@ -34,11 +34,11 @@ public class FeedPage {
     }
     */
 
-
-    public static void searchMusic(String name) {
+    public static void searchMusic(String name){
         //тык на музыку
         $(By.xpath(musicToolbarButtonXPath)).click();
         //ввод названия трека - поиск
+
         $(By.xpath((musicSearchFieldXpath1))).click();
         // по какой-то причине здесь не работает первый вариант XPath'а :\
         $(By.xpath((musicSearchFieldXpath2))).val(name).pressEnter();
@@ -50,12 +50,11 @@ public class FeedPage {
         $(By.xpath(musicListElementXPath)).click();
 
         $(By.xpath(addMusicButtonXPath)).click();
+
     }
 
     public static void openMyMusic(){
         $(By.xpath(myMusicButtonXPath)).click();
     }
-
-
 
 }
