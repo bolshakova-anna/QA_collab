@@ -1,14 +1,10 @@
 package task1;
 
 import com.codeborne.selenide.junit.ScreenShooter;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.disappears;
 import static com.codeborne.selenide.Configuration.*;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.addListener;
@@ -18,6 +14,9 @@ public class LoginPage {
 
   @Rule
   public ScreenShooter screenShooter = ScreenShooter.failedTests();
+
+  private static String loginFieldXPath = "//*[@id='field_email']";
+  private static String passwordFieldXPath = "//*[@id='field_password']";
 
   public LoginPage openInbox() {
     timeout = 10000;
@@ -33,8 +32,8 @@ public class LoginPage {
 
 
   public static void login(String OKUsername,String OKPassword) {
-    $(By.xpath("//*[@id='field_email']")).val(OKUsername);
-    $(By.xpath("//*[@id='field_password']")).val(OKPassword).pressEnter();
+    $(By.xpath(loginFieldXPath)).val(OKUsername);
+    $(By.xpath(passwordFieldXPath)).val(OKPassword).pressEnter();
   }
 
 }

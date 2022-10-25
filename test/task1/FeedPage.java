@@ -5,13 +5,20 @@ import org.junit.Rule;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 
 public class FeedPage {
 
     @Rule
     public ScreenShooter screenShooter = ScreenShooter.failedTests();
+
+    private static String musicToolbarButtonXPath = "//*[@id=\"music_toolbar_button\"]";
+    private static String musicSearchFieldXpath1 = "//*[@placeholder=\"Поиск\" and @data-l=\"t,input\"]";
+    private static String musicSearchFieldXpath2 = "//*[@id=\"music_layer\"]/header/div/wm-search-form/wm-search-input/input";
+    private static String musicListElementXPath = "//a[contains(@data-payload, \"artistName=Звери\")]/../..";
+    private static String addMusicButtonXPath = "//*[@title=\"В мою музыку\"]";
+    private static String myMusicButtonXPath = "//div[text()=\"Моя музыка\"]";
+
 
     /*
     public UserPage openInbox() {
@@ -29,19 +36,25 @@ public class FeedPage {
 
     public static void searchMusic(String name){
         //тык на музыку
-        $(By.xpath("//*[@id=\'music_toolbar_button\']")).click();
+        $(By.xpath(musicToolbarButtonXPath)).click();
         //ввод названия трека - поиск
-        $(By.xpath(("//*[@placeholder=\"Поиск\" and @data-l=\"t,input\"]"))).click();
-        $(By.xpath(("//*[@id=\"music_layer\"]/header/div/wm-search-form/wm-search-input/input"))).val(name).pressEnter();
+
+        $(By.xpath((musicSearchFieldXpath1))).click();
+        // по какой-то причине здесь не работает первый вариант XPath'а :\
+        $(By.xpath((musicSearchFieldXpath2))).val(name).pressEnter();
+
     }
 
-    public static void addMusic(){
-        $(By.xpath("//*[@id=\"music_layer\"]/main/div/div[2]/div/search-page/wm-portlet/slot/wm-tracks-list/main/wm-track[1]")).hover();
-        $(By.xpath("//*[@title=\"В мою музыку\"]")).click();
+
+        public static void addMusic(){
+        $(By.xpath(musicListElementXPath)).click();
+
+        $(By.xpath(addMusicButtonXPath)).click();
+
     }
 
     public static void openMyMusic(){
-        $(By.xpath("//div[text()='Моя музыка']")).click();
+        $(By.xpath(myMusicButtonXPath)).click();
     }
 
 }
