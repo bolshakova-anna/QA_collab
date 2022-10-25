@@ -1,11 +1,13 @@
 package task1;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 
 public class AddMusicTest {
@@ -24,4 +26,8 @@ public class AddMusicTest {
                 .shouldBe(visible);
     }
 
+    @AfterClass
+    public static void logout(){
+        closeWebDriver();
+    }
 }
