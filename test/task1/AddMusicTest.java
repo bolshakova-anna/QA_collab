@@ -9,11 +9,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class AddMusicTest {
-
+    private static String OKUsername = System.getProperty("OK.username", "technoPol27");
+    private static String OKPassword = System.getProperty("OK.password", "technoPolis2022");
     private static String OKMusicName = System.getProperty("OK.musicName", "звери - для тебя");
 
     @Test
     public void addMusicTest(){
+        LoginPage loginpage = new LoginPage();
+        loginpage.openInbox().login(OKUsername,OKPassword);
         FeedPage feedPage = new FeedPage();
 
         feedPage.searchMusic(OKMusicName);
