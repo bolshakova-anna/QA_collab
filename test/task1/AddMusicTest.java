@@ -20,8 +20,9 @@ public class AddMusicTest {
 
         feedPage.searchMusic(OKMusicName);
         feedPage.addMusic();
+        feedPage.openMyMusic();
 
-        $(By.xpath(""))
+        $(By.xpath("//a[contains(@data-payload, \"artistName=Звери\")]"))
                 .shouldHave(text(OKMusicName))
                 .shouldBe(visible);
     }
